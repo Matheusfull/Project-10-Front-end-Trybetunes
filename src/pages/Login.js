@@ -34,11 +34,12 @@ class Login extends React.Component {
     this.setState({ loading: false });
     const { history } = this.props;
     history.push('/search');
+    /* Esse método eu não conhecia, de adicionar ao history o endereço para onde eu quero ir */
   }
 
   render() {
     const { user, loading } = this.state;
-    if (loading) return <Loading />;
+    /* if (loading) return <Loading />; */
     return (
       <div data-testid="page-login">
         {
