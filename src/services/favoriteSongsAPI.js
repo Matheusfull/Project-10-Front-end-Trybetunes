@@ -14,7 +14,7 @@ const saveFavoriteSongs = (favoriteSongs) => localStorage
 // A função simulateRequest simula uma requisição para uma API externa
 // Esse tipo de função que "chama outra função" é chamada de
 // "currying function" https://javascript.info/currying-partials
-// não se preocupe, estudaremos isso futuramente.
+// não se preocupe, pois estudaremos isso futuramente.
 // --------------------------------------------------------------------
 
 const simulateRequest = (response) => (callback) => {
