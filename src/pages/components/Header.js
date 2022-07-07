@@ -19,11 +19,11 @@ class Header extends React.Component {
   handleName = async () => {
     /* const { user } = this.state; */
     const data = await getUser();
-    console.log(data);
+    /* console.log(data); */
     this.setState({ user: data.name });
     /* const { loading } = this.state; */
     this.setState({ loading: false });
-    console.log(this.state);
+    /* console.log(this.state); */
   }
 
   render() {
