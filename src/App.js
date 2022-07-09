@@ -14,7 +14,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Route exact path="/" component={ Login } />
         <Route path="/search" component={ Search } />
-        <Route exact path="/album/:id" component={ Album } />
+        <Route exact path="/album/:id" render={ (props) => <Album { ...props } /> } />
         <Route path="/favorites" component={ Favorites } />
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/profile/edit" component={ ProfileEdit } />
