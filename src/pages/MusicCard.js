@@ -1,41 +1,73 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { addSong } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class MusicCard extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: false,
+      favorite: false,
+    };
+  }
+
+  favoriteMusic = async () => {
+    this.setState({ loading: true });
+    const { trackId } = this.props;
+    /* console.log(trackId); */
+    await addSong(trackId);
+    this.setState({ loading: false, favorite: true });
+  }
+
   render() {
-    const { listMusic } = this.props;
-    const array = listMusic.filter((music, index) => index !== 0 && music);
-    console.log(array);
+    const { trackName, previewUrl, trackId } = this.props;
+    const { favorite, loading } = this.state;
+    /* const { listMusic } = this.props;
+    console.log(listMusic); */
+    /* const array = listMusic.filter((music, index) => index !== 0 && music); */
+    /* console.log(array); */
     return (
       <>
         <p>Músicas...</p>
-        {
-          array.length > 0 ? (
-            array.map((music) => (
-              <div key={ music.trackName }>
-                {/* <img src={ music.artworkUrl100 } alt={ music.artistName } /> */}
-                <p>{music.artistName}</p>
-                <p>{music.collectionName}</p>
-                <p>{music.trackName}</p>
-                <audio data-testid="audio-component" src={ music.previewUrl } controls>
-                  <track kind="captions" />
-                  O seu navegador não suporta o elemento
-                  {' '}
-                  {' '}
-                  <code>audio</code>
-                  .
-                </audio>
-              </div>
-            ))
-          ) : <p>Nenhuma músic foi encontrada</p>
-        }
+        <div key={ trackName }>
+          {/* <img src={ music.artworkUrl100 } alt={ music.artistName } /> */}
+          <p>{trackName}</p>
+          {/* <p>{music.collectionName}</p>
+          <p>{music.trackName}</p> */}
+          <audio data-testid="audio-component" src={ previewUrl } controls>
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            {' '}
+            {' '}
+            <code>audio</code>
+            .
+          </audio>
+          {
+            loading ? <Loading /> : (
+              <label htmlFor="favorita">
+                Favorita
+                <input
+                  type="checkbox"
+                  id="favorita"
+                  data-testid={ `checkbox-music-${trackId}` }
+                  onClick={ this.favoriteMusic }
+                  checked={ favorite }
+                />
+              </label>
+            )
+          }
+        </div>
       </>
     );
   }
 }
 
 MusicCard.propTypes = {
-  listMusic: PropTypes.arrayOf.isRequired,
+  /* listMusic: PropTypes.arrayOf.isRequired, */
+  trackName: PropTypes.string.isRequired,
+  previewUrl: PropTypes.string.isRequired,
+  trackId: PropTypes.number.isRequired,
 };
 
 export default MusicCard;

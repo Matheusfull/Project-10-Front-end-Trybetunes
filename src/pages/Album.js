@@ -43,7 +43,19 @@ class Album extends React.Component {
         <h1>Album</h1>
         <p data-testid="artist-name">{ artistName}</p>
         <p data-testid="album-name">{ collectionName}</p>
-        <MusicCard listMusic={ listMusic } />
+        {
+          listMusic.filter((music, index) => index !== 0 && music)
+            .map((music, index) => (
+              <MusicCard
+                key={ index }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                trackId={ music.trackId }
+                listMusic={ listMusic }
+              />
+            ))
+        }
+        {/* <MusicCard listMusic={ listMusic } /> */}
       </div>
     );
   }
