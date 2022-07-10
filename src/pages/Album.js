@@ -51,7 +51,7 @@ class Album extends React.Component {
                 trackName={ music.trackName }
                 previewUrl={ music.previewUrl }
                 trackId={ music.trackId }
-                listMusic={ listMusic }
+                /* listMusic={ listMusic } */
               />
             ))
         }
