@@ -52,6 +52,7 @@ class Album extends React.Component {
                 previewUrl={ music.previewUrl }
                 trackId={ music.trackId }
                 /* listMusic={ listMusic } */
+                objetoMusic={ music }
               />
             ))
         }
