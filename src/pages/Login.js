@@ -34,7 +34,8 @@ class Login extends React.Component {
     this.setState({ loading: false });
     const { history } = this.props;
     history.push('/search');
-    /* Esse método eu não conhecia, de adicionar ao history o endereço para onde eu quero ir */
+    /* Esse método eu não conhecia, de adicionar ao history o endereço para onde eu quero ir
+    Hoje revisando o código vejo que fui muito menino, foi dado em aula, mas garoto novo, programando, passou batido. Hoje já sou matuto kkkk sqn kkkk */
   }
 
   render() {
@@ -84,3 +85,32 @@ Login.propTypes = {
 };
 
 export default Login;
+
+/*
+Requisito 2
+1 - Criação padrão do input de name e botão (vale a pena já controlar os campos através das criação do estado e função que vai 'guardar' o que é digitado - a famosa handleChange):
+constructor() {
+    super();
+    this.state = {
+      user: '',
+      loading: false,
+    };
+  }
+
+  handleChange = ({ target }) => {
+    this.setState({
+      [target.name]: target.value,
+    });
+  }
+  value={ user }
+  onChange={ this.handleChange }
+
+2 - Habilitação do botão é feita pelo retorno da função que verifica a quantidade de carcteres digitado no nome.
+
+3 - Assim que eu clicar no Entrar, vamos pegar o nome que foi digitado e jogar na função createUser, porém vamos colocá-lo em um objeto {name: nome_digitado(this.state.user)}.
+obs: essa função simula o funcionamento de uma API, logo vamos precisar do async/await
+
+4 - Para dar uma senção que o nome foi salvo, vamos fazer uma renderização condicional, ou seja, ao clicarmos no Entrar mudamos o estado loading para true, salvamos o nome na createUser e depois mudamos o estado loading para false.
+
+5- Pega a prop history do Route e encaminha para a página de pesquisa, ou seja dá um push para serach ('/serach')
+*/

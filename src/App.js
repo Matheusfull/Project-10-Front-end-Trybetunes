@@ -18,7 +18,6 @@ class App extends React.Component {
         <Route path="/favorites" component={ Favorites } />
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/profile/edit" component={ ProfileEdit } />
-        <Route path="favorites" component={ Favorites } />
         <Route path="*" component={ NotFound } />
       </BrowserRouter>
     );
@@ -26,3 +25,10 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+Requisito 1
+1 - Vamos criar o BrowserRouter para que possamos ter rotas.
+2 - Agora vamos colocar cada rota para o componente específico: login, pesquisa, algum com rota dinâmica, favoritos, perfil, perfil para  editar e página não encontrada.
+3 - Criação de cada componente para um rota.
+*/
