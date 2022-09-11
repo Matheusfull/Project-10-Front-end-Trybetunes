@@ -136,3 +136,8 @@ const { trackId } = this.props;
 this.setState({ favorite: listFavorite.some((music) => music.trackId === trackId) });
 this.setState({ listFavorite });
 console.log(this.state); */
+
+/*
+Requisito 7
+7 - vai receber as props trackName, previewUrl. Aquela vai renderizar o nome do artista ou banda e esta será o endereço para tocar a música por 30 segundos.
+*/

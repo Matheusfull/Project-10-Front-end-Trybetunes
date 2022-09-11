@@ -70,3 +70,13 @@ Album.propTypes = {
   }).isRequired,
 };
 export default Album;
+
+/*
+Requisito 7
+1 - A função  collectionId, usa a getMusics que vamos pegar o id do álbum na URL por meio dos this.props.match.parms.id e jogar como parâmetro da getMusics.
+2 - Vindo as músicas da getMusics com o parâmetro passado, vamos pegar esse array e jogar no estado listMusic. O primeiro índice do array é apenas informativo, para pegarmos o nome do artista e coleção.
+3 - Como não vamos chamar em função em nenhum click ou onchange, essas músicas aparecerão após a telar ser montada, portanto a função collectionId será chamada no componentDidMount.
+4 - Vamos renderizar o nome do artista e da coleção nos parágrafos
+5 - Vamos listar as músicas, porém cuidado: vamos fazer um filtro para passar todos os índices do array, exceto o primeiro[0] listMusic.filter((music, index) => index !== 0 && music)
+6 - Agora sim podemos fazer um map para o componente MusicCard, passando como props o trackName, previewUrl, trackId e objetoMusic.
+*/
