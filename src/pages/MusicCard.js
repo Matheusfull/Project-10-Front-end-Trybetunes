@@ -81,37 +81,34 @@ class MusicCard extends React.Component {
     /* const array = listMusic.filter((music, index) => index !== 0 && music); */
     /* console.log(array); */
     return (
-      <>
-        <p>Músicas...</p>
-        <div key={ trackName }>
-          {/* <img src={ music.artworkUrl100 } alt={ music.artistName } /> */}
-          <p>{trackName}</p>
-          {/* <p>{music.collectionName}</p>
+      <div key={ trackName } className="music">
+        {/* <img src={ music.artworkUrl100 } alt={ music.artistName } /> */}
+        <p>{trackName}</p>
+        {/* <p>{music.collectionName}</p>
           <p>{music.trackName}</p> */}
-          <audio data-testid="audio-component" src={ previewUrl } controls>
-            <track kind="captions" />
-            O seu navegador não suporta o elemento
-            {' '}
-            {' '}
-            <code>audio</code>
-            .
-          </audio>
-          {
-            loading ? <Loading /> : (
-              <label htmlFor="favorita">
-                Favorita
-                <input
-                  type="checkbox"
-                  id={ trackId }
-                  data-testid={ `checkbox-music-${trackId}` }
-                  onChange={ this.favoriteMusic }
-                  checked={ favorite }
-                />
-              </label>
-            )
-          }
-        </div>
-      </>
+        <audio data-testid="audio-component" src={ previewUrl } controls>
+          <track kind="captions" />
+          O seu navegador não suporta o elemento
+          {' '}
+          {' '}
+          <code>audio</code>
+          .
+        </audio>
+        {
+          loading ? <Loading /> : (
+            <label htmlFor="favorita">
+              Favorita
+              <input
+                type="checkbox"
+                id={ trackId }
+                data-testid={ `checkbox-music-${trackId}` }
+                onChange={ this.favoriteMusic }
+                checked={ favorite }
+              />
+            </label>
+          )
+        }
+      </div>
     );
   }
 }

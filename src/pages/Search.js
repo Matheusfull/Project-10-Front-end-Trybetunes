@@ -49,55 +49,59 @@ class Search extends React.Component {
   render() {
     const { album, loading, artistaDaFetch, nomeDoArtista, listaDoAlbum } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="search_tela">
         <Header />
-        <h1>Search</h1>
-        {
-          loading ? <Loading /> : (
-            <>
-              <label htmlFor="band">
-                <input
-                  type="text"
-                  id="band"
-                  name="album"
-                  value={ album }
-                  placeholder="Digite o nome da banda ou artista"
-                  data-testid="search-artist-input"
-                  onChange={ this.handleChange }
-                />
-              </label>
-              <button
-                data-testid="search-artist-button"
-                type="button"
-                disabled={ this.enableSearch() }
-                onClick={ this.searchAlbum }
-              >
-                Pesquisar
+        <div className="search_input">
+          <h1>Search</h1>
+          {
+            loading ? <Loading /> : (
+              <>
+                <label htmlFor="band">
+                  <input
+                    type="text"
+                    id="band"
+                    name="album"
+                    value={ album }
+                    placeholder="Digite o nome da banda ou artista"
+                    data-testid="search-artist-input"
+                    onChange={ this.handleChange }
+                  />
+                </label>
+                <button
+                  data-testid="search-artist-button"
+                  type="button"
+                  disabled={ this.enableSearch() }
+                  onClick={ this.searchAlbum }
+                >
+                  Pesquisar
 
-              </button>
-            </>
-          )
-        }
+                </button>
+              </>
+            )
+          }
+        </div>
         {
           artistaDaFetch ? <p>{`Resultado de álbuns de: ${nomeDoArtista}`}</p> : ''
         }
-        {
-          listaDoAlbum.length > 0 ? (
-            listaDoAlbum.map((music) => (
-              <div key={ music.collectionId }>
-                <img src={ music.artworkUrl100 } alt={ music.artistName } />
-                <p>{music.collectionName}</p>
-                <p>{music.artistName}</p>
-                <Link
-                  data-testid={ `link-to-album-${music.collectionId}` }
-                  to={ `/album/${music.collectionId}` }
-                >
-                  Link para álbum
-                </Link>
-              </div>
-            ))
-          ) : <p>Nenhum álbum foi encontrado</p>
-        }
+        <div className="list_albuns">
+          {
+            listaDoAlbum.length > 0 ? (
+              listaDoAlbum.map((music) => (
+                <div key={ music.collectionId } className="albuns">
+                  <img src={ music.artworkUrl100 } alt={ music.artistName } />
+                  <p>{music.collectionName}</p>
+                  <p>{music.artistName}</p>
+                  <Link
+                    data-testid={ `link-to-album-${music.collectionId}` }
+                    to={ `/album/${music.collectionId}` }
+                  >
+                    Link para álbum
+                  </Link>
+                </div>
+              ))
+            ) : <p className="not_album">Nenhum álbum foi encontrado</p>
+          }
+        </div>
       </div>
     );
   }

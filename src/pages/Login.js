@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 /* import { useHistory } from 'react-router-dom' */
+import '../index.css';
 
 class Login extends React.Component {
   constructor() {
@@ -42,15 +43,15 @@ class Login extends React.Component {
     const { user, loading } = this.state;
     /* if (loading) return <Loading />; */
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login">
         {
           loading ? <Loading /> : (
             <>
               <h1> Login </h1>
-              <form>
+              <form className="form">
                 <label htmlFor="name">
-                  Nome:
                   <input
+                    placeholder="Nome"
                     id="name"
                     type="text"
                     name="user"
@@ -59,14 +60,17 @@ class Login extends React.Component {
                     onChange={ this.handleChange }
                   />
                 </label>
-                <button
-                  type="button"
-                  data-testid="login-submit-button"
-                  disabled={ this.isSaveButtonDisabled() }
-                  onClick={ this.handleClick }
-                >
-                  Entrar
-                </button>
+                <div className="box-buttons">
+                  <button
+                    className="btn btn-efeito"
+                    type="button"
+                    data-testid="login-submit-button"
+                    disabled={ this.isSaveButtonDisabled() }
+                    onClick={ this.handleClick }
+                  >
+                    Entrar
+                  </button>
+                </div>
               </form>
 
             </>

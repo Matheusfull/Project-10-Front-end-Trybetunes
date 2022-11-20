@@ -40,22 +40,28 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <h1>Album</h1>
-        <p data-testid="artist-name">{ artistName}</p>
-        <p data-testid="album-name">{ collectionName}</p>
-        {
-          listMusic.filter((music, index) => index !== 0 && music)
-            .map((music, index) => (
-              <MusicCard
-                key={ index }
-                trackName={ music.trackName }
-                previewUrl={ music.previewUrl }
-                trackId={ music.trackId }
-                /* listMusic={ listMusic } */
-                objetoMusic={ music }
-              />
-            ))
-        }
+        <div className="album_musics">
+          <div className="album_info">
+            <h1>Album</h1>
+            <p data-testid="artist-name">{ artistName}</p>
+            <p data-testid="album-name">{ collectionName}</p>
+          </div>
+          <div className="musics">
+            {
+              listMusic.filter((music, index) => index !== 0 && music)
+                .map((music, index) => (
+                  <MusicCard
+                    key={ index }
+                    trackName={ music.trackName }
+                    previewUrl={ music.previewUrl }
+                    trackId={ music.trackId }
+                    /* listMusic={ listMusic } */
+                    objetoMusic={ music }
+                  />
+                ))
+            }
+          </div>
+        </div>
         {/* <MusicCard listMusic={ listMusic } /> */}
       </div>
     );
